@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: env.CLIENT_URL,
+    origin: "*",
     credentials: true,
     allowedHeaders: "Content-Type,Authorization",
     methods: "GET,PUT,POST,PATCH,DELETE",
