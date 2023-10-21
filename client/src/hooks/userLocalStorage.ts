@@ -1,7 +1,7 @@
 export const useLocalStorage = (key: string) => {
   function setItem(value: unknown) {
     try {
-      localStorage.setItem(key, value);
+      localStorage.setItem(key, value as unknown as string);
     } catch (error) {
       console.log(error);
     }

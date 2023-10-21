@@ -9,9 +9,13 @@ const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = ({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   className,
   ...props
 }: DialogPrimitive.DialogPortalProps) => (
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   <DialogPrimitive.Portal className={cn(className)} {...props} />
 );
 DialogPortal.displayName = DialogPrimitive.Portal.displayName;
