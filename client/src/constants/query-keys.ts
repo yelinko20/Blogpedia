@@ -1,5 +1,6 @@
 export const QueryKeys = {
   GetUser: "get-user",
+  GetSearchPost: "get-search-post",
   GetAllPosts: "get-all-posts",
   GetAllSavedPosts: "get-all-saved-posts",
   CreateSavedPost: "create-saved-post",
