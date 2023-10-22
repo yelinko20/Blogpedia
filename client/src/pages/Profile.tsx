@@ -95,7 +95,7 @@ export default function Profile() {
               )}
               {user?.id == profile.user.id && (
                 <div className=" lg:hidden text-center">
-                  <Button>Edit profile</Button>
+                  <Button onClick={() => setIsOpen(true)}>Edit profile</Button>
                 </div>
               )}
             </div>

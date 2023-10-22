@@ -13,7 +13,7 @@ export default function HomeLayout() {
   }
   return (
     <>
-      {token && user ? (
+      {token || user ? (
         <>
           <MainNavbar />
           <section className="container mx-auto mt-24">
