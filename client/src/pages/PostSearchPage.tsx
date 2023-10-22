@@ -37,7 +37,7 @@ export default function PostSearchPage() {
     <div>
       {isSuccess && (
         <div className=" grid grid-cols-3">
-          <div className="col-start-1 col-span-2">
+          <div className="lg:col-start-1 lg:col-span-2 col-span-3 col-start-1 min-h-screen">
             <p className="text-3xl mb-10">
               Results for <b>{modifiedQuery}</b>
             </p>

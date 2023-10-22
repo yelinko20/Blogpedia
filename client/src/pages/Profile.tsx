@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useLocation, useParams } from "react-router-dom";
 
@@ -17,6 +17,8 @@ export default function Profile() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  const queryClient = useQueryClient();
+
   const isProfilePath =
     location.pathname === `/profile/${user?.profile.username}`;
 
@@ -28,6 +30,10 @@ export default function Profile() {
     queryFn: () => getUserProfile(username as string),
     queryKey: [QueryKeys.GetUserProfile, username],
   });
+
+  useEffect(() => {
+    queryClient.invalidateQueries([QueryKeys.GetUserProfile, username]);
+  }, [queryClient, username]);
 
   const {
     isLoading: isAllPostsLoading,
@@ -56,10 +62,10 @@ export default function Profile() {
                   </div>
                 ) : (
                   <div
-                    className="sm:h-20 sm:w-20 w-12 h-12 rounded-full overflow-hidden lg:hidden flex items-center justify-center sm:text-5xl text-2xl"
+                    className="sm:h-20 sm:w-20 w-12 h-12 rounded-full overflow-hidden lg:hidden flex items-center justify-center sm:text-5xl text-2xl text-white"
                     style={{ backgroundColor: profile.bgColor }}
                   >
-                    {user?.name.charAt(0)}
+                    {profile.user.name.charAt(0)}
                   </div>
                 )}
                 <div>
@@ -79,7 +85,6 @@ export default function Profile() {
                         style: {
                           border: "1px solid hsl(var(--primary))",
                           padding: "16px",
-                          color: "hsl(var(--primary))",
                         },
                         iconTheme: {
                           primary: "#713200",
@@ -123,7 +128,7 @@ export default function Profile() {
               <div className="">
                 {!profile.image ? (
                   <div
-                    className={`w-16 h-16 rounded-full inline-flex items-center justify-center text-4xl  select-none text-white`}
+                    className={`w-16 h-16 rounded-full inline-flex items-center justify-center text-4xl  select-none`}
                     style={{ backgroundColor: profile.bgColor }}
                   >
                     {profile.user.name.charAt(0)}
@@ -150,7 +155,6 @@ export default function Profile() {
                         style: {
                           border: "1px solid hsl(var(--primary))",
                           padding: "16px",
-                          color: "hsl(var(--primary))",
                         },
                         iconTheme: {
                           primary: "#713200",

@@ -6,9 +6,9 @@ import GetStartPage from "@/pages/GetStartPage";
 
 export default function HomeLayout() {
   const { getItem, removeItem } = useLocalStorage("accessToken");
-  const { user, isSuccess } = useUserAuth();
+  const { user, isError } = useUserAuth();
   const token = getItem();
-  if (isSuccess && !user) {
+  if (isError && !user) {
     removeItem();
   }
   return (
