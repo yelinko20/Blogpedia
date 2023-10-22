@@ -75,6 +75,7 @@ export const getPostByTag: RequestHandler = async (req, res, next) => {
             profile: true,
           },
         },
+        tags: true,
       },
     });
 

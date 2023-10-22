@@ -102,7 +102,7 @@ const Posts: React.FC<FeedPostProps> = ({
   const textWithoutHtml = concatenatedText.replace(/<[^>]*>/g, "");
   const shortText = truncateText(textWithoutHtml, 100, 300);
   const littleShorterText = truncateText(textWithoutHtml, 50, 150);
-  const tag = post?.tags[0].name;
+  const tag = post?.tags[0]?.name;
 
   const { image, bgColor, username } = post.author.profile;
   const { name } = post.author;
