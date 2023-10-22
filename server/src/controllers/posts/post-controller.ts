@@ -64,6 +64,7 @@ export const getPostByTag: RequestHandler = async (req, res, next) => {
           some: {
             name: {
               contains: tagName,
+              mode: "insensitive",
             },
           },
         },
