@@ -72,8 +72,7 @@ export const register: RequestHandler<
     const refreshToken = createRefreshAccessToken(newUser.id);
     const greeting = "Hello";
     res.cookie("token", refreshToken, {
-      httpOnly: true,
-      sameSite: false,
+      sameSite: "lax",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
@@ -177,8 +176,7 @@ export const logIn: RequestHandler<unknown, unknown, Login, unknown> = async (
     const refreshToken = createRefreshAccessToken(user.id);
 
     res.cookie("token", refreshToken, {
-      httpOnly: true,
-      sameSite: false,
+      sameSite: "none",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
